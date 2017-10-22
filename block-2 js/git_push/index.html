@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Start</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="" />
+	<link rel="icon" href="favicon.png"/>
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- 	<script>
+		// var name = 'Petya';
+		// var land = 'Земля';
+		// alert(land+name);
+		// console.log('hello');
+
+		// var years=prompt('Скільки вам років?',100);
+		// alert('Вам '+years+' лет!');
+
+		// var name = 'Василь';
+		// var number = radio / 67;
+		// var admin = name;
+		// alert('Admin\'s name '+admin);
+
+		// var i = 'Vasil';
+		// admin = i;
+		// var array= [1, 2, 4, 6];
+		// console.log(array);
+		// console.log('Third elem ' +array[78]);
+		// var secondArr = []
+		// for (var i = 0; i <= 999; i++) {
+		// 	secondArr[i] = i;
+	 //      	console.log('array[i]');
+		// }
+
+// 22.10.2017
+
+		// var userName = prompt('Хто прийшов?');
+		// if (userName == 'Адмін') {
+
+		// var pass = prompt('Пароль?');
+		// if(pass == 'Чорний Володар') {
+		// 	alert('Ласкаво Просимо!');
+		// } else if (pass == null) { // (*)
+		// 	alert('Відміна входу');
+		// } else {
+		// 	alert('Пароль невірний');
+		// }
+
+		// } else if (userName == null) { // (*) 
+		//     alert('Відміна входу');
+		
+		// } else {
+		// 	alert('Я вас не знаю');
+		// } 
+
+// new
+
+		// var userName = prompt('Яка офіційна назва JavaScript?');
+		// if (userName == 'EcmaScript') {
+		// 	alert ('Все вірно');
+
+		// } else if (userName == null) {
+		// 	alert('Немає відповіді');
+		// } else {
+		// 	alert('Не знаєте?"EcmaScript"')
+		// }
+
+	</script> -->
+
+<main>
+
+	<a href="javascript:promptFunc();">Call prompt</a></br> <!-- Додавання чисел -->
+	<a href="javascript:dice();">Call dice</a> <!-- Гральні кубики -->
+	<a href="javascript:eagleShowFunc();">Call Eagle and Tails</a>
+
+</main>
+
+<div id="eagle">
+	<h1>Eagles and tails</h1>
+	<h2>Select One</h2>
+	<label for="eagleRad">
+		<input type="radio" name="eagle_radio" value="eagle" id="eagleRad">Eagle
+	</label>
+	<br/>
+	<label for="tailRed">
+		<input type="radio" name="eagle_radio" value="tail" id="tailRed">Tail
+	</label>
+	<br/>
+
+	<button id="playButton" onclick="javascript:playEagle();">Play</button><br/>
+	<h3 id="result"></h3>
+	<button onclick="javascript:endGame();">End Game</button><br/>
+</div>
+
+	<script>
+
+
+		// document.getElementsByClassName('call_dice').onclick = dice(); {
+		// 	console.log("hello");
+		// };
+
+		// document.getElementsByClassName('call_dice').onclick = function(); {
+		// 	console.log("hello");
+		// };
+
+// Додавання чисел
+
+		function promptFunc() {
+		var num_1 = prompt("Enter first number");
+		var num_2 = prompt("Enter second number");
+		var sum = parseInt(num_1) + parseInt(num_2);
+
+        if ( isNaN(sum) ) {
+        alert("Wrong text. Try again");
+        promptFunc();
+        } else {
+        	alert(sum);
+        }
+	}
+        // promptFunc();
+
+// Гральні кубики
+
+    function diceFunc() {
+    	var dice_1 = Math.floor( (Math.random() * 6) + 1);
+    	var dice_2 = Math.floor( (Math.random() * 6) + 1);
+    	console.log("Dice #1 " + dice_1 + "\nDice #2: " + dice_2);
+    }	
+    var eagleGame = document.getElementsById('eagle_game');
+    // console.log(eagleGame);
+    function eagleShowFunc() {
+    	eagleGame.style.display = "block";
+    } 
+    // function endGame() {
+    // 	eagleGame.style.display = "none";
+    // }
+
+    function playEagle() {
+    	var radios = document.getElementsByName('eagle_radio');
+    	var generatedVal = Math.floor( (Math.random() * 2) );
+    	// console.log(generatedVal);
+    	for (var i = 0, length = radios.length; i < length; i++) {
+    		if (radios[i].checked) {
+    			var userSelectedVal = radios[i].value;
+    			if ( ( (userSelectedVal == "eagle") && (generatedVal == 0) ) || ( (userSelectedVal == "tail") && (generatedVal == 1) ) ){
+    				document.getElementsById('result').innerHTML = "You Won!!!";
+    				document.getElementsById('result').style.color = "green";
+
+    			} else {
+    				document.getElementsById('result').innerHTML = "You Lose!!!";
+    				document.getElementsById('result').style.color = "red";
+    			}
+    			
+    			break;
+
+    		}
+    	}
+    }
+
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+	<header class="ba-header">
+		<h1> This is h1</h1>
+
+	</header>
+	
+	<footer class="ba-footer">
+
+	</footer>
+</body>
+</html>
